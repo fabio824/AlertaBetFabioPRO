@@ -1,8 +1,7 @@
 import os
 from http.server import HTTPServer, BaseHTTPRequestHandler
-from threading import Thread
+import threading
 
-# Servidor web falso para o Render manter o bot ativo de graça
 class SimpleHandler(BaseHTTPRequestHandler):
     def do_GET(self):
         self.send_response(200)
@@ -14,22 +13,21 @@ def run_server():
     server = HTTPServer(("0.0.0.0", port), SimpleHandler)
     server.serve_forever()
 
-Thread(target=run_server, daemon=True).start()
+threading.Thread(target=run_server, daemon=True).start()
 
-# --- SEU CÓDIGO DO BOT COMEÇA AQUI ---
 import time
 import requests
 
 from config import (
     TELEGRAM_TOKEN,
-    CHAT_ID,
+    ID_DO_CHAT,
     API_FOOTBALL_KEY,
-    FIRST_HALF_START,
-    FIRST_HALF_END,
-    SECOND_HALF_START,
-    SECOND_HALF_END,
+    INÍCIO_DO_PRIMEIRO_TEMPO,
+    PRIMEIRA_METADE_FIM,
+    INÍCIO_DO_SEGUNDO_TEMPO,
+    SEGUNDA_METADE_FIM,
     MIN_DANGEROUS_ATTACKS_HT,
-    MIN_DANGEROUS_ATTACKS_FT,
+    MIN_ATAQUES_PERIGOSOS_FT,
     MIN_SHOTS,
-    MIN_CORNERS,
+    CANTOS_MIN,
 )
