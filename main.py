@@ -1,4 +1,4 @@
-🚨 **LIVE MATCH ALERT** 🚨
+ **LIVE MATCH ALERT** 
 
 🏆 **League:** {league_name}
 ⚔️ **Match:** {home_team} vs {away_team}
